@@ -85,7 +85,7 @@ $$
 
 $$(r, \theta, z), r \text{ and } \theta \text{ are polar coordinates for the vertical projection of the point onto the xy-plane }$$
 
-$0 \leq r \leq \infin, 0 \leq \theta \leq 2\pi, -\infin < z < \infin$
+$0 \leq r \leq \infty, 0 \leq \theta \leq 2\pi, -\infty < z < \infty$
 
 **Theorem: Triple Integrals in Cylindrical Coordinates System**
 
@@ -143,17 +143,17 @@ A line traced out by $\vec r(t) = <x(t), y(t), z(t)>$ can be computed in a simil
 
 1. Vector field over planar region R
 
-   $$
-   \vec F(x, y) = M(x, y)\ \vec i + N(x, y)\ \vec j
-   $$
+$$
+\vec F(x, y) = M(x, y)\ \vec i + N(x, y)\ \vec j
+$$
 
    M, N are real-valued functions
 
-2. Vector field in solid region R in 2d
+1. Vector field in solid region R in 2d
    
-   $$
-   \vec F(x, y, z) = M(x, y, z)\ \vec i + N(x, y, z)\ \vec j + P(x, y, z)\ \vec k
-   $$
+$$
+\vec F(x, y, z) = M(x, y, z)\ \vec i + N(x, y, z)\ \vec j + P(x, y, z)\ \vec k
+$$
    M, N and P are real-valued functions
 
   
