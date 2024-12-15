@@ -1,36 +1,24 @@
-# MATH2023 Summary
+# MATH2023 Summary Multivariable Calculus
 
 ## Table of Contents
 
-- [MATH2023 Summary](#math2023-summary)
+- [MATH2023 Summary Multivariable Calculus](#math2023-summary-multivariable-calculus)
   - [Table of Contents](#table-of-contents)
     - [Retangular Integral =\> Polar Integral](#retangular-integral--polar-integral)
     - [Surface area](#surface-area)
     - [Chapter 3: Multiple Integrals](#chapter-3-multiple-integrals)
 
 ### Retangular Integral => Polar Integral
-\
-$$
-\begin{aligned}
-\textbf{Find slope of tangent line in polar coordinate system}
-\end{aligned}
-$$
 
-$$
-\begin{aligned}
-\hspace{2em} \text{Suppose that } r = f(\theta). \text{ If } f \text{ is differentiable at } \theta = \theta_0, \text{ then the slope of the tangent line to the curve at point } (r_0, \theta_0) \text{ is given by}
-\end{aligned}
-$$
+Find slope of tangent line to a polar curve in polar coordinate
+
+Suppose that $r = f(\theta)$. f is differentiable at $\theta=\theta_0$, then the slope of tangent line to the curve at point $(r_0, \theta_0)$ is given by
 
 $$
 \frac{dy}{dx} = \frac{f'(\theta_0) \sin\theta_0 + f(\theta_0) \cos\theta_0}{f'(\theta_0) \cos\theta_0 - f(\theta_0) \sin\theta_0}
 $$
 
-$$
-\begin{aligned}
-\hspace{2em} \text{provided that the denominator is nonzero at that point. An angle } \theta_0 \text{ for which } f(\theta_0) = 0 \text{ and } f'(\theta_0) \neq 0, \text{ the tangent line has polar equation } \theta = \theta_0, \text{ with slope } \tan\theta_0
-\end{aligned}
-$$
+provided that the denominator is nonzero at the point. At angle $\theta_0$ for which $f(\theta_0)=0$ and$f'(\theta_0) \neq 0$, the tangent line has slope $tan \theta_0$.
 
 \
 $$
