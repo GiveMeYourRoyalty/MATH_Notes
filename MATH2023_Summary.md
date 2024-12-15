@@ -141,21 +141,17 @@ A line traced out by $\vec r(t) = <x(t), y(t), z(t)>$ can be computed in a simil
 \
 **Definition: Vector Fields 矢量场**
 
-1. Vector field over planar region R
+1. Vector field over planar region R, and M, N are real-valued functions
 
 $$
 \vec F(x, y) = M(x, y)\ \vec i + N(x, y)\ \vec j
 $$
 
-   M, N are real-valued functions
-
-1. Vector field in solid region R in 2d
+2. Vector field in solid region R in 2d, and M, N and P are real-valued functions
    
 $$
 \vec F(x, y, z) = M(x, y, z)\ \vec i + N(x, y, z)\ \vec j + P(x, y, z)\ \vec k
 $$
-   M, N and P are real-valued functions
-
   
 **Example: Gradient Field**
 
