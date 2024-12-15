@@ -29,7 +29,7 @@ Keypoint: $dA = dy dx = r dr d\theta$
 If $z = f(x, y)$ is a continuous function of 2 real variables over region R,
 
 $$
-\iint_{R} f(x, y)dA = \int^{\theta_{max}}_{\theta_{min}} \int ^{r_{max}}_{r_{min}} f(rcos\theta, rsin\theta)rdr d\theta
+\iint_{R} f(x, y) dA = \int^{\theta_{max}}_{\theta_{min}} \int ^{r_{max}}_{r_{min}} f(r \cos \theta, r\sin \theta)rdr d\theta
 $$
 
 Where G is the region of integration in polar coordinates.
