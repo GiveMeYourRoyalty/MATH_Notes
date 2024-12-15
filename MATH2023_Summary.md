@@ -19,7 +19,7 @@ $$
 \frac{dy}{dx} = \frac{f'(\theta_0) \sin \theta_0 + f(\theta_0) \cos \theta_0}{f'(\theta_0) \cos \theta_0 - f(\theta_0) \sin \theta_0}
 $$
 
-provided that the denominator is nonzero at the point. At angle $\theta_0$ for which $f(\theta_0)=0$ and$f'(\theta_0) \neq 0$, the tangent line has slope $tan \theta_0$.
+provided that the denominator is nonzero at the point. At angle $\theta_0$ for which $f(\theta_0)=0$ and$f'(\theta_0) \neq 0$, the tangent line has slope $\tan \theta_0$.
 
 \
 **Theorem: Changing Rectangular Integrals into Polar Integrals**
@@ -29,7 +29,7 @@ Keypoint: $dA = dy dx = r dr d\theta$
 If $z = f(x, y)$ is a continuous function of 2 real variables over region R,
 
 $$
-\iint_{R} f(x, y) dA = \int^{\theta_{max}}_{\theta_{min}} \int ^{r_{max}}_{r_{min}} f(r \cos \theta, r\sin \theta)rdr d\theta
+\iint_R f(x, y) dA = \int^{\theta_{max}}_{\theta_{min}} \int ^{r_{max}}_{r_{min}} f(r \cos \theta, r\sin \theta)rdr d\theta
 $$
 
 Where G is the region of integration in polar coordinates.
