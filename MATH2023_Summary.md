@@ -10,6 +10,9 @@
     - [Triple Integral in Spherical Coordinates](#triple-integral-in-spherical-coordinates)
     - [Line Integral](#line-integral)
     - [Vector Fields, Work Done, Flux](#vector-fields-work-done-flux)
+    - [Conservative Vector Field](#conservative-vector-field)
+    - [Green's Theorem in Curl Form](#greens-theorem-in-curl-form)
+    - [Divergence Theorem](#divergence-theorem)
 
 ### Retangular Integral => Polar Integral
 [Table of Contents](#table-of-contents)
@@ -160,3 +163,134 @@ The gradient field of a differentiable function $w = f(x, y, z)$ is the field of
 $$
 \nabla f(x, y, z) = <\frac{\partial f}{\partial x}, \frac{\partial f}{\partial y}, \frac{\partial f}{\partial z}>
 $$
+
+\
+**Work Done by a force field along a smooth curve C**
+
+$$
+\int_C \vec F(x, y, z) \cdot \vec T(x, y, z)\ ds\\
+\text{where } \vec T(x, y, z) = \frac{\frac{d \vec r}{dt}}{\left| \frac{d \vec r}{dt} \right|} \text{ is the unit tangent vector to C }
+$$
+
+**Remark: equivalent ways to compute work done**
+
+$$
+\begin{align*}
+\text{Work Done} &= \int_C \vec{F}(x, y, z) \cdot \vec{T}(x, y, z)\ ds \\
+&= \int_C \vec{F}(x, y, z) \cdot \frac{\frac{d \vec{r}}{dt}}{\left| \frac{d \vec{r}}{dt} \right|}\ \left| \frac{d \vec{r}}{dt} \right|\ dt \\
+&= \int_{t_{\min}}^{t_{\max}} \vec{F}(x(t), y(t), z(t)) \cdot \frac{d \vec{r}}{dt}\ dt \\
+&= \int_C \vec{F}(x, y, z) \cdot d \vec{r} \\
+&= \int_{t_{\min}}^{t_{\max}} \left( M(x(t), y(t), z(t)) \frac{dx}{dt} + N(x(t), y(t), z(t)) \frac{dy}{dt} + P(x(t), y(t), z(t)) \frac{dz}{dt} \right) dt \\
+&= \int_C M\ dx + N\ dy + P\ dz
+\end{align*}
+$$
+
+Given that $\vec F(x, y, z) = <M(x, y, z), N(x, y, z), P(x, y, z)>$
+
+\
+**Fluid's Flow**
+Suppose that $\vec F$ is a velocity field of a fluid flowing. $\vec r(t)$ is a smooth curve in the domain of the continuous velocity field
+
+$$
+\textbf{fluid's flow } of \vec F \textbf{ along the curve C } = \int _C \vec F \cdot \vec T\ ds\\
+\text{ where } \vec T = \frac{\frac{d \vec r}{dt}}{\left| \frac{d \vec r}{dt} \right|} \text{ is the unit tangent vector of } \vec F
+$$
+
+The line integral above is called a **flow integral**. If the curve C is closed, then the flow above is called **the circulation of $\vec F$ around loop C**.
+
+**Flux 通量**
+Given that Curve C is **smooth and closed** (starting and ending points are same) on contiunous vector field and $\vec n$ is the <u>outward-pointing unti vector on C</u>
+
+$$
+\text{Flux of } \vec F \text{ across the curve C } = \int _C \vec F \cdot \vec n\ ds 
+$$
+
+The line integral above represents the rate at which the fluid entering and leaving the region enclosed by the curve C.
+
+### Conservative Vector Field
+[Table of Contents](#table-of-contents)
+
+Suppose that the vector field $\vec F(x, y, z) = M(x, y, z)\ \vec i + N(x, y, z)\ \vec j + P(x, y, z)\ \vec k$ has continuous first partial derivatives in an open connected region R.
+
+Any vector fields satisfying one of the following three logically equivalent conditions is called a **conservative vector field (definition)**.
+
+**Condition 1**: For any 2 points A and B lying inside R, the work done integral from A to B is **the same over all paths joining points from A to B**
+   
+$$
+\int _C \vec F \cdot d \vec r= \int _C \vec F \cdot \vec T\ ds
+$$
+
+**Condition 2**: For every smooth closed curve C
+
+$$
+\int _C \vec F \cdot d \vec r = 0
+$$
+
+**Condition 3**: There is a scalar function $w = f(x, y, z)$ such that for every point $(x, y, z)$ in the region R, such a function is called **a potential function of the vector field $\vec F$**
+
+$$
+\nabla f(x, y, z) = \vec F(x, y, z), i.e. \frac{\partial f}{\partial x} = M(x, y, z), \frac{\partial f}{\partial y} = N(x, y, z), \frac{\partial f}{\partial z} = P(x, y, z)
+$$
+
+\
+**Fundamental Theorem for Line Integral** (applicable to vector fields with 2 or 3 variables)
+
+(3D) Let C be a smooth curve joining the points A and B and given by $\vec r(t)$. Let f be a scalar differentiable function with a continuous gradient vector $\nabla f(x, y, z) = \vec F(x, y, z)$, Then we must have
+
+$$
+\int _C \vec F \cdot d \vec r = \int ^{terminal\ point\ B} _{terminal\ point\ A} \nabla f \cdot d \vec r = f(B) - f(A)
+$$
+
+\
+**Test for Conservative Vector**
+
+Let $\vec F(x, y, z)$ be a vector field on a connected and simply connected domain whose component functions have continuous first order partial derivatives. Then the vector field is conservative **if and only if**
+
+$$
+旋度\ (curl\ \vec F)(x, y, z) \stackrel{def}{=} (\nabla \times \vec F)(x, y, z) = \begin{vmatrix} \vec i & \vec j & \vec k \\ \frac{\partial}{\partial x} & \frac{\partial}{\partial y} & \frac{\partial}{\partial z} \\ M & N & P \end{vmatrix} = \vec 0
+$$
+
+\
+**Some terminologies of region** (applicable to 2D and 3D)
+
+- **open region**: if for every point (x, y) taken from the region R, there exists at least one disk centered at (x, y) that lies **entirely in R**
+- **open connected region**: if R is oopen and any two points taken from R can be joined by a path the entirely lies in R
+- **simple curve**: if the curve doesn't intersect itself anywhere between its endpoints, i.e. $\vec r(a) = \vec r(b)$ but $\vec r(t_1) \neq \vec r(t_2)$ when $a < t_1 < t_2 < b$
+- **simply connected region**: a connected region such that every simply closed curve in R encloses only points that are in R
+  - Intuitively speaking, a simply connected region contains no hole and cannot consist of 2 separate pieces
+
+### Green's Theorem in Curl Form
+
+[Table of Contents](#table-of-contents)
+
+**Green's theorem in Circulation-Curl or Tangential Form**
+
+Let C be a piecewise smooth, simple (means no cross) and closed curve
+
+$$
+\oint _C \vec F \cdot \vec T\ ds = \iint _R (Curl\ \vec F) \cdot \vec k\ dA
+$$
+
+The circle on the first integral sign means the integration around C is in the counterclockwise direction. Sometimes, this said to be in **positive orientation**
+
+### Divergence Theorem
+
+[Table of Contents](#table-of-contents)
+
+**(Definition)** A surface S is said to be **orientable** if the normal vectors can vary continuously over the surface. i.e. counterexample: Mobius strip is not orientable.
+
+**(Definition)** The **divergence of a vector field** $\vec F(x, y, z) = <M(x, y, z), N(x, y, z), P(x, y, z)$ is defined as a scalar function below
+
+$$
+div(\vec F) = \nabla \cdot \vec F = <\frac{\partial}{\partial x}, \frac{\partial}{\partial y}, \frac{\partial}{\partial z}> \cdot <M, N, P> = <\frac{\partial M}{\partial x}, \frac{\partial N}{\partial y}, \frac{\partial P}{\partial z}>
+$$
+
+\
+**Theorem: Divergence Theorem 高斯散度定理**：将3D向量场的通量与该区域的边界联系起来
+Suppose $\vec F(x, y, z)$ has continuous first partial derivatives, the S be a piecewise smooth orientable closed surface. $\vec n$ is the outward unit normal vector over the surface
+
+$$
+\iint _S \vec F \cdot \vec n\ dS = \iiint _D div(\vec F)\ dV
+$$
+
+Remark: The surface S must be a **closed surface enclosing a solid region having finite volume**
