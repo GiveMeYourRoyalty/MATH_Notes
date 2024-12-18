@@ -4,6 +4,14 @@
 
 - [MATH2023 Summary Multivariable Calculus](#math2023-summary-multivariable-calculus)
   - [Table of Contents](#table-of-contents)
+    - [Notation about Order of Partial Differentiation](#notation-about-order-of-partial-differentiation)
+    - [Differentiability and Implicit Differentiation](#differentiability-and-implicit-differentiation)
+    - [Gradients](#gradients)
+    - [Directional Derivatives](#directional-derivatives)
+    - [Linear Approximation, Total Differential](#linear-approximation-total-differential)
+    - [Local Extremes](#local-extremes)
+    - [Lagrange Multiplier](#lagrange-multiplier)
+    - [Fubini's Theorem (First Form)](#fubinis-theorem-first-form)
     - [Retangular Integral =\> Polar Integral](#retangular-integral--polar-integral)
     - [Surface area](#surface-area)
     - [Triple Integral in Cylindrical Coordinates](#triple-integral-in-cylindrical-coordinates)
@@ -13,11 +21,150 @@
     - [Conservative Vector Field](#conservative-vector-field)
     - [Green's Theorem in Curl Form](#greens-theorem-in-curl-form)
     - [Divergence Theorem](#divergence-theorem)
+    - [Stokes' Theorem](#stokes-theorem)
+
+### Notation about Order of Partial Differentiation
+[Table of Contents](#table-of-contents)
+
+Let $z = f(x, y)$. When differentiating $f$ twice, we produce second order derivatives by the following notation
+
+$$
+\frac{\partial ^2 f}{\partial x^2} \stackrel{def}{=} \frac{\partial}{\partial x} (\frac{\partial f}{\partial x}) \stackrel{def}{=} f_{xx}\\
+\frac{\partial ^2 f}{\partial y^2} \stackrel{def}{=} \frac{\partial}{\partial y} (\frac{\partial f}{\partial y}) \stackrel{def}{=} f_{yy}\\
+\frac{\partial ^2 f}{\partial x \partial y} \stackrel{def}{=} \frac{\partial}{\partial x} (\frac{\partial f}{\partial y}) \stackrel{def}{=} f_{yx}\\
+\frac{\partial ^2 f}{\partial y \partial x} \stackrel{def}{=} \frac{\partial}{\partial y} (\frac{\partial f}{\partial x}) \stackrel{def}{=} f_{yx}
+$$
+
+### Differentiability and Implicit Differentiation
+[Table of Contents](#table-of-contents)
+
+Given that $z = f(x, y)$, $f$ is **differentiable at point $(x_0, y_0)$** if $f_x, f_y$ both exist and
+
+$$
+f(x, y) - [f(x_0, y_0) + f_x(x_0, y_0)(x - x_0) + f_y(x_0, y_0)(y-y_0)] = (x - x_0)\ \varepsilon _1(x, y) + (y - y_0)\ \varepsilon _2(x, y),
+$$
+
+where $\varepsilon _1(x, y)$ -> 0 and $\varepsilon _2(x, y)$ -> 0 at point $(x, y) \text{ approaches } (x_0, y_0)$
+
+\
+**Theorem: Implicit Differentiation**
+Suppose that $w = F(x, y)$ is differentiable and assume that $F(x, y) = 0$ defines $y$ as a differentiable function of $x$. Then at any point where $\frac{\partial F}{\partial y} \neq 0$, we must have
+
+$$
+\frac{dy}{dx} = -\frac{\frac{\partial F}{\partial x}}{\frac{\partial F}{\partial y}}
+$$
+
+### Gradients
+[Table of Contents](#table-of-contents)
+
+**Typical Algebraic Properties of Gradients**:
+
+$$
+\nabla (fg) = (\nabla f) g + f (\nabla g)\\
+\nabla (\frac{f}{g}) = \frac{(\nabla f) g - f (\nabla g)}{g^2}
+$$
+
+Notice that they have the same form as the corresponding rules for derivatives of single-variable functions
+
+### Directional Derivatives
+[Table of Contents](#table-of-contents)
+
+**Definition of Directional Derivative**
+Suppose that $z = f(x, y)$ is a real-value function, $\vec u = <u_1, u_2>$ is a unit vector
+
+$$
+(D_{\vec u} f)(a, b) \stackrel{def}{=} \lim _{h \rightarrow 0} \frac{f(a + h u_1, b + hu_2)- f(a, b)}{h - 0} = \frac{d}{dt} [f(a + h u_1, b + hu_2)] |_{t = 0}
+$$
+
+\
+**Theorem: using Gradients to find Directional Derivatives**
+
+$$
+(D _{\vec u} f) (a, b) = \vec u \cdot (\nabla f) (a, b)
+$$
+
+### Linear Approximation, Total Differential
+[Table of Contents](#table-of-contents)
+
+**Local Linear Approximation** to $z = f(x, y)$ at point $(x_0, y_0, f(x_0, y_0))$:
+
+$$
+L(x, y) \stackrel{def}{=} f(x_0, y_0) + (x - x_0) f_x (x_0, y_0) + (y - y_0)f_y (x_0, y_0)
+$$
+
+L is exactly the **tangent plane** to the surface $z = f(x, y)$ at point $(x_0, y_0, f(x_0, y_0))$
+
+\
+**Definition: Total Differential 全微分**
+
+Suppose that $z = f(x, y)$ is a real-valued function, which is differentiable at point $(x_0, y_0)$. If a point moves from $(x_0, y_0)$ to $(x_0 + \Delta x, y_0 + \Delta y)$
+
+$$
+\text{Actual change of } f, \Delta f \stackrel{def}{=} f(x_0 + \Delta x, y_0 + \Delta y) - f(x_0, y_0)
+$$
+
+$$
+\text{Besides, the change in the linear approximation L }\\
+df \stackrel{def}{=} L(x_0 + \Delta x, y_0 + \Delta y) - L(x_0, y_0) = \Delta x \cdot f_x(x_0, y_0) + \Delta y \cdot f_y(x_0, y_0)\\
+\text{Somtimes, we write } dx, dy \text{ instead of } \Delta x, \Delta y.\\
+df \text{ is called the total differential of f}
+$$
+
+### Local Extremes
+[Table of Contents](#table-of-contents)
+
+**Definitions of Critical Point and Saddle point**
+
+- **Critical Point 临界点** is an interior point $(a, B)$ in domain of function $z = f(x, y)$ where:
+  1. both $\frac{\partial f}{\partial x}(a, b) = \frac{\partial f}{\partial y} = 0$, or
+  2. one or both of $\frac{\partial f}{\partial x}(a, b), \frac{\partial f}{\partial y}(a, b)$ does not exist
+- **Saddle Point 鞍点** $(a, b, f(a,b))$ is a critical point and there are domain points $(x, y)$ where $f(x, y) > f(a, b)$ and domain points $f(x, y) < f(a, b)$
+
+
+**Second Derivative Test for Local Extreme Value**
+Suppose that $z = f(x, y)$ and its first and second partial derivatives are continuous throughout a disk centered at $(a, b)$ and that $f_x (a, b) = f_y (a, b) = 0$. Then we have the following
+  1. $f$ has a **local maximum** at $(a, b)$ if $f_{xx}(a, b) < 0$ and $f_{xx}(a, b) f_{yy}(a, b) - (f_{xy}(a, b))^2 > 0$
+  2. $f$ has a **local minimum** at $(a, b)$ if $f_{xx}(a, b) > 0$ and $f_{xx}(a, b) f_{yy}(a, b) - (f_{xy}(a, b))^2 > 0$
+  3. $f$ has a **saddle point** at $(a, b)$ if $f_{xx}(a, b) > 0$ and $f_{xx}(a, b) f_{yy}(a, b) - (f_{xy}(a, b))^2 < 0$
+  4. The test is inconclusive at $(a, b)$ if $f_{xx}(a, b) > 0$ and $f_{xx}(a, b) f_{yy}(a, b) - (f_{xy}(a, b))^2 = 0$
+
+### Lagrange Multiplier
+[Table of Contents](#table-of-contents)
+
+**Extreme-Value Theorem** 极值定理
+Suppose that A is a **closed and bounded** region on xy-plane. Function $z = f(x, y)$ is continuous on region A,  then such a function must attain its absolute maximum and minimum at points in region A.
+
+\
+**Lagrange Multipliers 拉格朗日乘数**
+
+- One constraint function $g(x, y) = k$. Assume that $\nabla g \neq \vec 0$ at any point on $g(x, y) = k$
+  To find the maximum/minimum value and corresponding point of $z = f(x, y)$, solve the following equations
+
+$$
+\nabla f(a, b) = \lambda \nabla g(a, b)\\
+g(a, b) = k
+$$
+
+- Two contraints
+  Suppose that there is a point $P(a, b, c)$ such that $w = f(x, y, z)$ has maximum/minimum value at $P(a, b, c)$ subject to the following 2 constraints simultaneously: $g_1(x, y, z) = k_1, g_2(x, y, z) = k_2$. Assume that $\nabla g_i \neq \vec 0$ on each point of $g_i(x, y, z) = k_i$ for each $i = 1, 2$ and $\nabla g_1(P)$ and $\nabla g_2(P)$ are not parellel to each other,
+
+$$
+(\nabla f)(a, b, c) = \lambda _1 (\nabla g_1)(a, b, c) + \lambda _2 (\nabla g_2)(a, b, c)\\
+g_1(a, b, c) = k_1 \text{ and } g_2(a, b, c) = k_2
+$$
+
+### Fubini's Theorem (First Form)
+[Table of Contents](#table-of-contents)
+
+Suppose that $z = f(x, y)$ is a continuous function throughtout the rectangular region R: $a \leq x \leq b, c \leq y \leq d$. The we have
+
+$$
+\int ^b _a \int ^d _c f(x, y)\ dy\ dx = \iint _R f(x, y)\ dA = \int ^d _c \int ^b _a f(x, y)\ dx\ dy
+$$
 
 ### Retangular Integral => Polar Integral
 [Table of Contents](#table-of-contents)
 
-\
 **Find slope of tangent line to a polar curve in polar coordinate**
 
 Suppose that $r = f(\theta)$. f is differentiable at $\theta=\theta_0$, then the slope of tangent line to the curve at point $(r_0, \theta_0)$ is given by
@@ -115,7 +262,7 @@ $$
 **Theorem: Triple Integral in Spherical Coordinates**
 
 $$
-\iiint_D F(x, y, z)\ dV = \int ^{\theta_{max}} _{\theta_{min}} \int ^{\phi_{max}} _{\phi _{min}} \int ^{\rho_{max}} _{\rho_{min}} F(\rho \sin \phi \cos \theta, \rho \sin \phi \sin \theta, \rho \cos \phi)\ \rho^2\ \sin \phi\ d\rho\ d\phi\ d\theta
+\iiint _D F(x, y, z)\ dV = \int ^{\theta_{max}} _{\theta_{min}} \int ^{\phi_{max}} _{\phi _{min}} \int ^{\rho_{max}} _{\rho_{min}} F(\rho \sin \phi \cos \theta, \rho \sin \phi \sin \theta, \rho \cos \phi)\ \rho^2\ \sin \phi\ d\rho\ d\phi\ d\theta
 $$
 
 where the solid D is a spherical wedge 球面楔 defined as follows
@@ -294,3 +441,12 @@ $$
 $$
 
 Remark: The surface S must be a **closed surface enclosing a solid region having finite volume**
+
+### Stokes' Theorem
+[Table of Contents](#table-of-contents)
+
+$$
+\oint P dx +Q dy + R dz = \iint _{\sum} (\frac{\partial R}{\partial y} - \frac{\partial Q}{\partial z})\ dydz + (\frac{\partial P}{\partial z} - \frac{\partial R}{\partial x})\ dzdx + (\frac{\partial Q}{\partial x} - \frac{\partial P}{\partial y})\ dxdy\\
+\text{ could be simply written as }\\
+\oint _{\partial \sum} \vec v \cdot d \vec r = \iint _{\sum} \nabla \times \vec v \cdot d \vec S
+$$
