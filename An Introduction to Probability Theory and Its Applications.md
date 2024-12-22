@@ -13,6 +13,8 @@
     - [3. The Sample Space. Events](#3-the-sample-space-events)
     - [4. Relations among Events](#4-relations-among-events)
     - [5. Discrete Sample Spaces](#5-discrete-sample-spaces)
+    - [7. The Basic Definitions and Rules](#7-the-basic-definitions-and-rules)
+  - [Chapter 2 Elements of Combinatorial Analysis](#chapter-2-elements-of-combinatorial-analysis)
 ## Introduction: The Nature of Probability Theory
 
 ### 1. The Background
@@ -60,3 +62,28 @@ At any rate, even for applications freedom and flexibility are essential, and it
     - **Definition 4**. The symbols $A \subset B$ (A implies B) and $B \supset A$ (B is implied by A) are equivalent and signify that every point of A is contained in B. In this case, we shall write $B - A$ instead of $BA'$ to denote the event that $B$ but not $A$ occurs
 
 ### 5. Discrete Sample Spaces
+
+**Definition**: A sample space is called *discrete* if it contains only finitely many points or infinitely many points which can be arranged into a simple sequence $E_1, E_2, ...$
+
+The probabilities of events in discrete sample spaces are obtained by *mere addtions*, whereas in other spaces *integrations* are necessary.
+
+### 7. The Basic Definitions and Rules
+
+**Fundamental Convention**. Given a discrete sample space $\mathfrak{S}$ with sample points $E_1, E_2, \dots$, we shall assume that with each $E_j$ there is assoiated a non-negative number, called the *probability of $E_j$* and denoted by $P\{E_j\}$
+
+$$
+P\{E_1\} + P\{E_2\} + \cdots  = 1
+$$
+
+\
+**Definition**. $P\{A\}$ of any event A is the sum of the probabilities of all sample points in it
+
+\
+**Theorem**. $P\{A_1 \cup A_2\} = P\{A_1\} + P\{A_2\} - P\{A_1 A_2\}$
+
+## Chapter 2 Elements of Combinatorial Analysis
+
+- **Notation**: $(n)_r = n(n-1) \cdots (n-r+1)$ [This notaions is not standard but will be used in this book, even when n is not an integer]
+- **Binomial coefficient** $\binom{n}{r} = \frac{(n)_r}{r!} = \frac{n!}{r!(n-r)!} = \frac{n(n-1) \cdots (n-r+1)}{1 \cdot 2 \cdots (r-1)r}$
+- We define $\binom{n}{0} = 1, 0! = 1 \text{ and } (n)_0 = 1$
+- **Multinomial coefficient** $\binom{n}{r_1}\binom{n-r_1}{r_2}\binom{n-r_1-r_2}{r_3} \cdots \binom{n-r_1- \cdots -r_{k-2}}{r_{k-1}} = \frac{n!}{r_1! r_2! \cdots r_3!}$, where $r_1 + r_2 + \cdots r_k = n$
