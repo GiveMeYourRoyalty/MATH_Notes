@@ -20,6 +20,10 @@
     - [7. Examples for Waiting Times](#7-examples-for-waiting-times)
     - [8. Binomial Coefficients](#8-binomial-coefficients)
     - [9. Stirling's Formula](#9-stirlings-formula)
+      - [12. Problems and Identities involving Binomial Coefficients](#12-problems-and-identities-involving-binomial-coefficients)
+  - [Chapter 3 Fluctuations in Coin Tossing and Random Walks](#chapter-3-fluctuations-in-coin-tossing-and-random-walks)
+    - [1. General Orientation. The Reflection Principle](#1-general-orientation-the-reflection-principle)
+    - [2. Random Walks: Basic Notions and Notations](#2-random-walks-basic-notions-and-notations)
 ## Introduction: The Nature of Probability Theory
 
 ### 1. The Background
@@ -226,4 +230,91 @@ $$
 
 Except that $e^C = \sqrt{2 \pi}$ hasn't been proved yet.
 
-**Refinement**. $\sqrt{2 \pi} n^{n + \frac{1}{2}} e^{-n} \cdot e^{(12n+1)^{-1}} < n! < \sqrt{2 \pi} n^{n + \frac{1}{2}} e^{-n} \cdot e^{(12n)^{-1}} $
+**Refinement**. $\sqrt{2 \pi} n^{n + \frac{1}{2}} e^{-n} \cdot e^{(12n+1)^{-1}} < n! < \sqrt{2 \pi} n^{n + \frac{1}{2}} e^{-n} \cdot e^{(12n)^{-1}}$
+
+#### 12. Problems and Identities involving Binomial Coefficients
+
+1. For integer $n \ge 2$
+  $$
+  1 - \binom{n}{1} + \binom{n}{2} -+ \cdots = 0\\
+  \binom{n}{1} + 2 \binom{n}{2} + 3 \binom{n}{3} + \cdots = n \cdot 2^{n-1}\\
+  \binom{n}{1} - 2 \binom{n}{2} + 3 \binom{n}{3} -+ \cdots = 0\\
+  2 \cdot 1 \binom{n}{2} + 3 \cdot 2 \binom{n}{3} + 4 \cdot 3 \binom{n}{4} + \cdots = n \cdot (n-1) \cdot 2^{n-2}
+  $$
+
+So many formulas, skip at first reading
+
+## Chapter 3 Fluctuations in Coin Tossing and Random Walks
+
+### 1. General Orientation. The Reflection Principle
+
+Consider $n = p + q$ symbols $\epsilon_1, ..., \epsilon_n$, each standing for either +1 or -1; suppose there are $p$ +1s and $q$ -1s. The partial sum $s_k = \epsilon_1 + \cdots + \epsilon_n$ represents the difference between the number of pluses and minuses occurring at the first k places. Then
+   $$
+   s_k - s_{k-1} = \epsilon_k = \pm 1, \hspace{2em} s_0 = 0, \hspace{2em} s_n = p - q
+   $$
+Where $k = 1, 2, ..., n$
+
+**Definition.** From a geometric view, let $n > 0 \text{ and } x$ be integers. A path $(s_1, s_2, ..., s_n)$ from the origin to the point $(n, x)$ is a polygonal line whose vertices have abscissas $0, 1, ..., n$ and ordinates $s_0, s_1, ..., s_n$ with $s_n = x$.
+
+We refer to $n$ as the *length* of the path.
+
+**Example.** The ballot theorem [With the assumption that all admissible paths are equally probable]
+
+Suppose that, in a ballot,candidate **P** scores p votes and candidate **Q** scores q votes, where p > q. The probability that throughout the counting there are always more votes for **P** than for **Q** equals (p - q)/(p + q)
+
+**Example.** Galton's rank order test
+
+This test can be abstracted as, the resulting path of length $2r$ joins the origin to the point $(2r, 0)$. And the whole line is non-negative. It can be shown that the probability of this is 1/(r + 1) no matter how long the line is.
+
+**Setup.** Let $A = (a, \alpha)$ and $B = (b, \beta)$ be integral points in the positive quadrant: $b > a \ge 0, \alpha > 0, \beta > 0$. Reflection of $A$ is defined as $A' = (a, -\alpha)$.
+
+**Lemma.** (*Reflection principle*) The number of paths from $A$ to $B$ which touch or cross the x-axis equals the number of all paths from $A'$ to $B$.
+
+**The ballot theorem.** Let $n$ and $x$ be positive integers. There are exactly $\displaystyle\frac{X}{n}N_{n, x} \text{ paths } (s_1, ..., s_n = x)$ from the origin to the point $(n, x)$ such that $s_1 > 0, ..., s_n > 0$, with $N_{n, x} = \displaystyle\binom{p + q}{q} = \displaystyle\binom{p + q}{p}, n = p + q, x = p - q$.
+
+**Proof.** Clearly there exist exactly as many admissible paths as there are paths from the point $(1, 1)$ to $(n, x)$ which neither etouch or cross the x-axis. By the last lemma the number of such paths equals
+  $$
+  N_{n-1, x-1} - N_{n-1, x+1} = \binom{p+q-1}{p-1} - \binom{p+q-1}{p}
+  $$
+
+With $p$ and $q$ defined earlier. A trite calculation show that the right side equals $N_{n, x}(p-q)/(p+q)$ , as asserted.
+
+### 2. Random Walks: Basic Notions and Notations
+
+Each path of length $\rho$ can be interpreted as the outcome of a random walk experiment: there are $2^\rho$ such paths, and we attribute probability of $2^{-\rho}$ to each. (Such random walk is called *symmetric*).
+
+We denote the individual steps generically by $\bold{X}_1, \bold{X}_2, ...$ and the positions of the particle by $\bold{S}_1, \bold{S}_2, ...$. Thus 
+
+$$
+S_n = X_1 + \cdots + X_n, \hspace{2em} S_0 = 0
+$$
+
+The event "at epoch $n$ the particle is at the point $r$" will be denoted by {$\bold{S}_n = r$}.
+The probability of the event "a vist to $r$ at epoch $n$" is denoted by $p_{n, r}$.
+The number $N_{n, r}$ of paths for the origin to the point $(n, r)$ is given before, and hence
+
+$$
+p_{n, r} = \bold{P}\{\bold{S}_n = r\} = \binom{n}{\displaystyle\frac{n + r}{2}}2^{-n},
+$$
+
+Where the binomial coefficient is to be interpreted as 0 unless (n + r)/2 is an integer between 0 and $n$, inclusive.
+
+A *return to the origin* occurs at epoch $2v$ if $\bold{S}_{2v} = 0$. Because of he frequent occurerence of this probability we denote it by $u_{2v}$
+
+$$
+u_{2v} = \binom{2v}{v} 2^{-2v} \thicksim \frac{1}{\sqrt{\pi v}}  \text{ by Stirling's formula }
+$$
+
+A *First return* occurs at epoch $2v$ if
+
+$$
+\bold{S}_1 \ne 0, ..., \bold{S}_{2v-1} \ne 0, \text{ but } \bold{S}_{2v} = 0
+$$
+
+The probability for this event will be denoted by $f_{2v}$. By definition $f_0 = 0$.
+
+The probabilies $f_{2n}$ and $u_{2n}$ are related in a noteworthy manner
+
+$$
+u_{2n} = f_2 u_{2n - 2} + f_4 u_{2n - 4} + \cdots + f_{2n} u_0 \hspace{4em} n \ge 1
+$$

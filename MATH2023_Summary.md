@@ -12,7 +12,7 @@
     - [Local Extremes](#local-extremes)
     - [Lagrange Multiplier](#lagrange-multiplier)
     - [Fubini's Theorem (First Form)](#fubinis-theorem-first-form)
-    - [Retangular Integral =\> Polar Integral](#retangular-integral--polar-integral)
+    - [Rectangular Integral =\> Polar Integral](#rectangular-integral--polar-integral)
     - [Surface area](#surface-area)
     - [Triple Integral in Cylindrical Coordinates](#triple-integral-in-cylindrical-coordinates)
     - [Triple Integral in Spherical Coordinates](#triple-integral-in-spherical-coordinates)
@@ -162,7 +162,7 @@ $$
 \int ^b _a \int ^d _c f(x, y)\ dy\ dx = \iint _R f(x, y)\ dA = \int ^d _c \int ^b _a f(x, y)\ dx\ dy
 $$
 
-### Retangular Integral => Polar Integral
+### Rectangular Integral => Polar Integral
 [Table of Contents](#table-of-contents)
 
 **Find slope of tangent line to a polar curve in polar coordinate**
