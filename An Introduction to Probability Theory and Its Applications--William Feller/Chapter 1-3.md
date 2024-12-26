@@ -20,10 +20,13 @@
     - [7. Examples for Waiting Times](#7-examples-for-waiting-times)
     - [8. Binomial Coefficients](#8-binomial-coefficients)
     - [9. Stirling's Formula](#9-stirlings-formula)
-      - [12. Problems and Identities involving Binomial Coefficients](#12-problems-and-identities-involving-binomial-coefficients)
+    - [12. Problems and Identities involving Binomial Coefficients](#12-problems-and-identities-involving-binomial-coefficients)
   - [Chapter 3 Fluctuations in Coin Tossing and Random Walks](#chapter-3-fluctuations-in-coin-tossing-and-random-walks)
     - [1. General Orientation. The Reflection Principle](#1-general-orientation-the-reflection-principle)
     - [2. Random Walks: Basic Notions and Notations](#2-random-walks-basic-notions-and-notations)
+    - [3. The Main Lemma](#3-the-main-lemma)
+    - [4. Last Visit and Long Leads](#4-last-visit-and-long-leads)
+    - [\*5. Changes of Sign](#5-changes-of-sign)
 ## Introduction: The Nature of Probability Theory
 
 ### 1. The Background
@@ -232,7 +235,7 @@ Except that $e^C = \sqrt{2 \pi}$ hasn't been proved yet.
 
 **Refinement**. $\sqrt{2 \pi} n^{n + \frac{1}{2}} e^{-n} \cdot e^{(12n+1)^{-1}} < n! < \sqrt{2 \pi} n^{n + \frac{1}{2}} e^{-n} \cdot e^{(12n)^{-1}}$
 
-#### 12. Problems and Identities involving Binomial Coefficients
+### 12. Problems and Identities involving Binomial Coefficients
 
 1. For integer $n \ge 2$
   $$
@@ -270,7 +273,7 @@ This test can be abstracted as, the resulting path of length $2r$ joins the orig
 
 **Lemma.** (*Reflection principle*) The number of paths from $A$ to $B$ which touch or cross the x-axis equals the number of all paths from $A'$ to $B$.
 
-**The ballot theorem.** Let $n$ and $x$ be positive integers. There are exactly $\displaystyle\frac{X}{n}N_{n, x} \text{ paths } (s_1, ..., s_n = x)$ from the origin to the point $(n, x)$ such that $s_1 > 0, ..., s_n > 0$, with $N_{n, x} = \displaystyle\binom{p + q}{q} = \displaystyle\binom{p + q}{p}, n = p + q, x = p - q$.
+**The ballot theorem.** Let $n$ and $x$ be positive integers. There are exactly $\displaystyle\frac{x}{n}N_{n, x} \text{ paths } (s_1, ..., s_n = x)$ from the origin to the point $(n, x)$ such that $s_1 > 0, ..., s_n > 0$, with $N_{n, x} = \displaystyle\binom{p + q}{q} = \displaystyle\binom{p + q}{p}, n = p + q, x = p - q$.
 
 **Proof.** Clearly there exist exactly as many admissible paths as there are paths from the point $(1, 1)$ to $(n, x)$ which neither etouch or cross the x-axis. By the last lemma the number of such paths equals
   $$
@@ -316,5 +319,131 @@ The probability for this event will be denoted by $f_{2v}$. By definition $f_0 =
 The probabilies $f_{2n}$ and $u_{2n}$ are related in a noteworthy manner
 
 $$
-u_{2n} = f_2 u_{2n - 2} + f_4 u_{2n - 4} + \cdots + f_{2n} u_0 \hspace{4em} n \ge 1
+(2.6) \hspace{4em} u_{2n} = f_2 u_{2n - 2} + f_4 u_{2n - 4} + \cdots + f_{2n} u_0 \hspace{4em} n \ge 1
+$$
+
+### 3. The Main Lemma
+
+**Lemma 1.** The probability that no return to the origin occurs up to and including epoch $2n$ is the same as the probability that a return occurs at epoch $2n$. In symbols,
+
+$$
+(3.1) \hspace{3em} \bold{P}\{S_1 \ne 0, ..., S_{2n} \ne 0 \} = \bold{P}\{S_{2n} = 0 \} = u_{2n}
+$$
+
+When the event on the left occurs either all $S_j$ are positive, or all are negative. The 2 contingencies being equally probable we can restate a previous formula as
+
+$$
+\bold{P}\{S_1 > 0, ..., S_{2n} > 0\} = \frac{1}{2} u_{2n}
+$$
+
+**Proof.** Considering all possible values of $\bold{S}_{2n}$, it is clear that
+  $$
+  \bold{P}\{S_1 > 0, ..., S_{2n} > 0\} = \sum _{r = 1} ^\infty \bold{P}\{S_1 > 0, ..., S_{2n-1} > 0, S_{2n} = 2r\}
+  $$
+
+(all terms with $r > n$ varnish). By the ballot theorem, the number of paths satisfying the condition on the right side equals $N_{2n-1, 2r -1} - N_{2n-1, 2r+1}$, and so the $r$th term of the sum equals
+
+$$
+\frac{1}{2} (p_{2n-1, 2r-1} - p_{2n-1, 2r+1})
+$$
+
+The result of the sum reduces to $\frac{1}{2} p_{2n-1, 1}$. It is easy to verify that $p_{2n-1, 1} =  u_{2n}$ and concludes the proof.
+
+The lemma can be restated in several ways; for example
+
+$$
+\bold{P}\{S_1 \ge 0, ..., S_{2n} \ge 0\} = u_{2n}
+$$
+
+Because a path of length $2n$ with all vertices strictly above the x-axis passes the point $(1, 1)$. Taking $(1, 1)$ as new origin we obtain a path of length $2n - 1$ with all vertices non-negative with respect to the new x-axis, which can be written as
+
+$$
+\bold{P}\{S_1 > 0, ..., S_{2n} > 0\} = \frac{1}{2}\bold{P}\{S_1 \ge 0, ..., S_{2n - 1} \ge 0\}
+$$
+
+Looking at the right hand side of the above equation, since $S_{2n-1}$ is an odd number, $S_{2n-1} \ge 0$ would imply that also $S_{2n} \ge 0$. Hence RHS can also imply LHS.
+
+Lemma 1 directly leads to an explicit expression for the probability distribution for ***first return to the origin***.First return occurs at epoch $2n$ means the conditions
+
+$$
+S_1 \ne 0, ..., S_{2k} \ne 0 \text{ are satisfied for } k = n - 1, \text{ but not for } k = n.
+$$
+
+In view of (3.1) this implies
+
+$$
+(3.6) \hspace{3em} f_{2n} = u_{2n-2} - u_{2n} \hspace{3em} n = 1, 2, ...
+$$
+
+A trite calculation reduces this expression to
+
+$$
+(3.7) \hspace{3em} f_{2n} = \frac{1}{2n - 1} u_{2n}
+$$
+
+**Lemma 2.** The probability that the first return to the origin occurs at epoch $2n$ is given by (3.6) or (3.7).
+
+### 4. Last Visit and Long Leads
+
+**Theorem 1.** (*Arc sine law for last visits*) The probability that up to and including epoch $2n$ the last visit to the origin occurs at epoch $2k$ is given by
+
+$$
+(4.1) \hspace{4em} \alpha_{2k, 2n} = u_{2k}u_{2n-2k}, \hspace{2em} k = 0, 1, ..., n
+$$
+
+**Proof.** The conditions are $S_{2n} = 0 \text{ and } S_{2k+1} \ne 0, ..., S_{2n} \ne 0$. The first $2k$ vertices can be chosen in $2^{2k}u_{2k}$ different ways. Taking the point $(2k, 0)$ as new origin and using $(3.1)$ we see that the next $(2n - 2k)$ vertices can be chosen in $2^{2n-2k}u_{2n-2k}$ ways. Finally dividing by $2^{2n}$.
+
+It follows from the theorem that the numbers (4.1) add to unity. The probability distribution which attaches weight $\alpha _{2k, 2n}$ to the point $2k$ is called ***the discrete arc sine distribution of order n***, because the inverse sine function provides excellent numerical approximations. The distribution is symmetric in the sense that $\alpha _{2k, 2n} = \alpha _{2n-2k, 2n}$. And the central term is the smallest.
+
+$$
+(4.2) \hspace{4em} f(x) = \frac{1}{\pi \sqrt{x(1-x)}} \hspace{2em} 0 < x < 1
+$$
+
+Using Stirling's formula, $u_{2n}$ is close to $1/\sqrt{\pi n}$, except when n is very small. This yields the approximation
+
+$$
+\alpha _{2k, 2n} \approx \frac{1}{n} f(x_k) \hspace{2em} x_k = \frac{k}{n}
+$$
+
+the error committed is negligible except when $k$ is extremely close to $0$ or $n$. $(4.2)$ can be integrated explicitly and we conclude that for fixed $0 < x < 1$ and n sufficiently large
+
+$$
+(4.4) \hspace{4em} \sum _{k < xn} \alpha _{2k, 2n} \approx \frac{2}{\pi} \arcsin \sqrt{x}
+$$
+
+Contrary to popular notions, it is quite likely that in a long coin-tossing game one of the players remains practically the whole time on the winning side, the other on the losing side.
+
+**Theorem 2.** (*Discrete arc sine law for sojourn times.*) The probability that in the time interval from $0$ to $2n$ the particle spends $2k$ time units on the positive side adn $2n - 2k$ time units on the negative side equals $\alpha_{2k, 2n}$.
+
+**Corollary.** If $0 < x < 1$, the probability that $xn$ time units are spent on the positive side and $(1 - x)n$ on the negative sides tends to $\frac{2}{\pi} \arcsin \sqrt{x}$ as $n \rightarrow \infty$.
+
+**Proof of Theorem 2.** Consider paths of the fixed length $2n$ and denote by $b_{2k, 2n}$ the probability that exactly $2k$ sides lie above the t-axis. We have to provat that
+
+$$
+(4.5) \hspace{4em} b_{2k, 2v} = \alpha_{2k, 2v}
+$$
+
+Recall that $(3.4)$ asserts that $b_{2v, 2v} = u_{2v}$ and for reasons of symmetry we have also $b_{0, 2v} = u_{2v}$. It suffices therefore to prove $(4.5)$ for $1 \le k \le v - 1$.
+Then assume that exactly $2k$ out of the $2n$ time units are spent on the positive side, and $1 \le k \le v - 1$. In this case a first return to the origin must occur at some epoch $2r < 2n$, and 2 contingencies are possible. First, the $2r$ time units up to the first return may be spent on the positive side. In this case $r \le k \le n - 1$, and the section of the path beyond the vertex $(2r, 0)$ has exactly $2k - 2r$ sdies above the axis. The number of such paths equals $\frac{1}{2} \cdot 2^{2r} f_{2r} \cdot 2^{2n - 2r} b_{2k - 2r, 2n - 2r}$. The other possibility is that the $2r$ time units up to the first return are spent on the negative side. in this case the section beyond the vertex $(2r, 0)$ has exactly $2k$ sides above the axis, whence $n - k \ge k$. The number of such paths equals $\frac{1}{2} \cdot 2^{2r} f_{2r} \cdot 2^{2n - 2r} b_{2k, 2n - 2r}$. Accordingly, when $1 \le k \le n - 1$
+
+$$
+(4. 6) \hspace{4em} b_{2k, 2n} = \frac{1}{2} \sum ^k _{r=1}f_{2r} b_{2k - 2r, 2n - 2r} + \frac{1}{2} \sum ^{n - k} _{r = 1} f_{2r} b_{2k, 2n - 2r}
+$$
+
+Now we proceed by induciton. The assertion $(4.5)$ is trivially true for $v = 1$, and we assume it to be true for $v = n - 1$. Then $(4.6)$ reduces to
+
+$$
+(4.7) \hspace{4em} b_{2k, 2n} = \frac{1}{2} u_{2n - 2k} \sum ^k _{r=1}f_{2r} u_{2k-2r}+\frac{1}{2} u_{2k} \sum ^{n-k} _{r=1}f_{2r}u_{2n-2k-2r}
+$$
+
+In view of (2.6) the first sum equals to $u_{2k}$ while the second equals $u_{2n-2k}$. Hence (4.5) is true also for $v = n$.
+
+### *5. Changes of Sign
+
+We revert to random walk terminology. A ***change of sign*** is said t occur at epoch $n$ is $\bold{S}_{n-1}$ and $\bold{S}_{n+1}$ are of opposite signs, that is, if the path crosses the axis. In the case $\bold{S}_n = 0$, and hence $n$ is necessarily an even integer\dots
+
+**Theorem 1.** The probability $\xi _{r, 2n+1}$ that up to epoch $2n + 1$ there occur exactlly $r$ changes of signs equals $2p_{2n+1, 2r+1}$ 
+
+$$
+(5.1) \hspace{4em} \xi _{r, 2n+1} = 2\bold{P}\{S_{2n+1} = 2r + 1\} \hspace{2em} r = 0, 1, ...
 $$
