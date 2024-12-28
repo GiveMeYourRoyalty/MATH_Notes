@@ -27,6 +27,7 @@
     - [3. The Main Lemma](#3-the-main-lemma)
     - [4. Last Visit and Long Leads](#4-last-visit-and-long-leads)
     - [\*5. Changes of Sign](#5-changes-of-sign)
+    - [7. Maxima and First Passages](#7-maxima-and-first-passages)
 ## Introduction: The Nature of Probability Theory
 
 ### 1. The Background
@@ -440,10 +441,56 @@ In view of (2.6) the first sum equals to $u_{2k}$ while the second equals $u_{2n
 
 ### *5. Changes of Sign
 
-We revert to random walk terminology. A ***change of sign*** is said t occur at epoch $n$ is $\bold{S}_{n-1}$ and $\bold{S}_{n+1}$ are of opposite signs, that is, if the path crosses the axis. In the case $\bold{S}_n = 0$, and hence $n$ is necessarily an even integer\dots
+We revert to random walk terminology. A ***change of sign*** is said to occur at epoch $n$ is $\bold{S}_{n-1}$ and $\bold{S}_{n+1}$ are of opposite signs, that is, if the path crosses the axis. In the case $\bold{S}_n = 0$, and hence $n$ is necessarily an even integer\dots
 
 **Theorem 1.** The probability $\xi _{r, 2n+1}$ that up to epoch $2n + 1$ there occur exactlly $r$ changes of signs equals $2p_{2n+1, 2r+1}$ 
 
 $$
 (5.1) \hspace{4em} \xi _{r, 2n+1} = 2\bold{P}\{S_{2n+1} = 2r + 1\} \hspace{2em} r = 0, 1, ...
 $$
+
+(Proof is intentionally omitted due to complexity.)
+
+An amazing consequence of the theorem is that the probability $\xi _{r, n}$ of $r$ changes of sign in $n$ trials decreases with $r$:
+
+$$
+(5.3) \hspace{4em} \xi _{0, n} \ge \xi _{1, n} > \xi _{2, n} > \cdots
+$$
+
+This means that regardless of the number of tosses, the event that the lead never changes is more probable than any preassigned number of changes.
+
+### 7. Maxima and First Passages
+
+We now turn our attention to other interesting consequences of this principle.
+
+Consider paths that remain below the line $x = r$, that is, paths satisfying the condition
+
+$$
+(7.1) \hspace{4em} S_0 < r, S_1 < r, ..., S_n < r
+$$
+
+We say in this case the *maximum* of the path is $ < r$. Let $A = (n, k)$ be a point with ordinate $k \le r$. A path from $0$ to $A$ touches or crosses the line $x = r$ if it violates the condition $(7.1)$.
+
+**Lemma 1.** Let $k \ge r$. The probability that a path of length $n$ leads to $A = (n, k)$ and has a maximum $\le r$ equals $p_{n, 2r-k} = \bold{P}\{S_n = 2n - k\}$. [I don't quite understand this lemma, maybe there is a typo in the book.]
+
+**Theorem 1.** The probability tha the maximum of a path of length $n$ equals $r \ge 0$ coincides with the positive member of the pair $p_{n, r}$ and $p_{n, r+1}$.
+
+For $r = 0$ and even epochs the assertion reduces to
+
+$$
+(7.2) \hspace{4em} \bold{P}\{S_1 \le 0, S_2 \le 0, ..., S_{2n} \le 0\} = u_{2n}
+$$
+
+The next notion plays an important role in the general theory of stochastic processes. A ***first passage through the point $r > 0$*** is said to take place at epoch $n$ if
+
+$$
+S_1 < r, ..., S_{n-1} < r, \hspace{1em} S_n = r
+$$
+
+**Theorem 2.** The probability $\varphi _{r, n}$ that the first passage through r occurs at epoch $n$ is given by
+
+$$
+(7.4) \hspace{4em} \varphi _{r, n} = \frac{1}{2} [p_{n-1, r-1} - p_{n-1, r+1}] = \frac{r}{n} \binom{n}{\displaystyle \frac{n+r}{2}} 2^{-n}
+$$
+
+[Follwing a few topics are skipped in this first reading]
