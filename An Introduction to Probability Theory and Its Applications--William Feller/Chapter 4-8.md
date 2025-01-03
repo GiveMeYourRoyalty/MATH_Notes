@@ -18,6 +18,12 @@
     - [2. The Binomial Distribution](#2-the-binomial-distribution)
     - [3. The Central Term and the Tails](#3-the-central-term-and-the-tails)
     - [4. The Law of Large Numbers](#4-the-law-of-large-numbers)
+    - [5. The Poisson Approximation](#5-the-poisson-approximation)
+    - [6. The Poisson Distribution](#6-the-poisson-distribution)
+    - [8. Waiting Times. The Negative Binomial Distribution](#8-waiting-times-the-negative-binomial-distribution)
+    - [9. The Multinomial Distribution](#9-the-multinomial-distribution)
+  - [Chapter 8 The Normal Distribution to the Binomial Distribution](#chapter-8-the-normal-distribution-to-the-binomial-distribution)
+    - [1. The Normal Distribution](#1-the-normal-distribution)
 
 ## Chapter 4 Combination of Events
 
@@ -367,7 +373,174 @@ $$
 (3.6) \hspace{4em} \bold{P}\{S_n \le r\} \le \frac{(n-r)p}{(np-r)^2} \hspace{2em} \text{if } r < np
 $$
 
-<br><br><br>
+<br><br>
 
 ### 4. The Law of Large Numbers
 
+<br>
+
+If $S_n$ is the number of successes in $n$ trials, then $S_n/n$ is the average number of successes and should near $p$. Consider, the probability that $S_n/n$ exceeds $p + \epsilon$, where $\epsilon > 0$ is arbitrarily small but fixed. THe probability is the same as $\bold{P}\{S_n > n(p+\epsilon)\}$, and by (3.5) this is greater than $1/(n\epsilon ^2)$. It follows that as $n$ increases
+
+$$
+\bold{P}\{S_n > n(p+\epsilon)\} \rightarrow 0
+$$
+
+We see in the same way that $\bold{P}\{S_n <n(p-\epsilon)\} \rightarrow 0$, and thus
+
+$$
+(4.1) \hspace{4em} \bold{P}\{\left| \frac{S_n}{n} - p\right| < \epsilon\} \rightarrow 1
+$$
+
+In words: As $n$ increases, the probability that the average number of successes deviates from $p$ by more than any preassigned $\epsilon$ tends to zero. This is one form of the law of large numbers and serves as a basis ofr the intuitive notion of probability as a measure of relative frequencies.
+
+The assertion (4.1) is the classical law of large numbers. It is of very limited interest and should be replaced by the more precise and more useful *strong law of large numbers*.
+
+<br><br>
+
+### 5. The Poisson Approximation
+
+<br>
+
+In many applications we deal with Bernoulli trials where, comparativelly speaking, $n$ is large and $p$ is small, whereas the product $\lambda = np$ is of moderate magnitude. In such cases it is convenient to use an approximation to $b(k;n,p)$ which is due to Poisson and which we proceed to derive. For $k=0$, we have
+
+$$
+(5.2) \hspace{4em} b(0;n,p)=(1-p)^n=(1-\frac{\lambda}{n})^n \approx e^{-\lambda}
+$$
+
+Furthermore, from (3.1) it is seen that for any fixed $k$ and sufficientlly large $n$
+
+$$
+(5.5) \hspace{4em} \frac{b(k;n,p)}{b(k-1;n,p)}=\frac{\lambda-(k-1)p}{kq}\approx \frac{\lambda}{k}
+$$
+
+Generally by induction
+
+$$
+(5.6) \hspace{4em} b(k;n,p) \approx \frac{\lambda ^k}{k!}e^{-\lambda}
+$$
+
+This is the classical *Poisson approximation to the binomial distribution*. In view of its great importance we introduce the notation
+
+$$
+(4.7) \hspace{4em} p(k;\lambda) = e^{-\lambda}\frac{\lambda ^k}{k!}
+$$
+
+<br><br>
+
+### 6. The Poisson Distribution
+
+\
+The 3 principal distributions, with ramifcations throughout probaility theory, are the binomial distribution, the normal distribution (to be introduced in the following chapter), and the Poisson distribution
+
+$$
+(6.1) \hspace{4em} p(k;\lambda) = e^{-\lambda}\frac{\lambda ^k}{k!}
+$$
+
+The true nature of the Poisson distribution will become apparent only in connection with the theory of stochastic processes.
+
+$$
+(6.2) \hspace{4em} p(k;\lambda t) = e^{-\lambda t} \frac{(\lambda t)^k}{k!}
+$$
+
+as the probability of finding exactly $k$ points in a fixed interval of length $t$.
+
+The parameter $\lambda$ is a physical constant which determines the density of points on the $t$-axis.
+
+<br><br>
+
+### 8. Waiting Times. The Negative Binomial Distribution
+
+\
+Consider a succession of $n$ Bernoullli trials and let us inquire how long it will take for the $r$th success to turn up. Here $r$ is a fixed positive integer. The total number of successes in $n$ trials may fall short of $r$, but the probability that the $r$th success occurs at the trial number $v \le n$ is clearly independent of $n$ and depends only on $v, r and p$. Since necessarily $v \ge r$, it is preferable to write $v = k + r$. The probability that the $r$th success occurs at the trial number $r + k$ (where $k = 0, 1,...$) will be denoted by $f(k;r,p)$. It equals the probabilty that exactly $k$ failures precede $r$th success.
+
+$$
+(8.1) \hspace{4em} f(k;r,p)=\binom{r+k-1}{k} \cdot p^r q^k
+$$
+
+Rewriting the binomial coefficient in accordance with Chapter 2, (12.4) $\displaystyle\binom{-a}{k} = (-1)^k \binom{a+k-1}{k}$, we find the alternative form
+
+$$
+(8.2) \hspace{4em} f(k;r,p)=\binom{-r}{k} p^r (-q)^k, \hspace{2em} k=0,1,2,...
+$$
+
+We must ask whether it is possible that the trial *never* end, that is, whether an infinite sequence eof trials may produce fewer than $r$ successes.
+The probability of an infinite sequence with fewer than $r$ successes can be discounted if, and only if,
+
+$$
+(8.3) \hspace{4em} \sum ^\infty _{k=0} f(k;r,p)=1
+$$
+
+This is so because by the binomial theorem
+
+$$
+(8.4) \hspace{4em} \sum ^\infty _{k=0} \binom{-r}{k} (-q)^k = (1-q)^{-r} = p^{-r}
+$$
+
+Multiplying (8.4) by $p^r$ we get (8.3).
+
+For arbitrary fixed real $r > 0$ and $0 < p < 1$ the sequence $\{f(k;r,p)\}$ is called **a negative binomial distribution**.
+
+When $r$ is a positive integer $\{f(k;r,p)\}$ may be interpreted as the probability distribution for waiting time to the $r$th success.
+
+<br><br>
+
+### 9. The Multinomial Distribution
+
+\
+The binomial distribution can easily be generalized to the case of $n$ repeated independent trials where each trial can have one of several outcomes. Denote the possible outcomes of each trial by $E_1, ..., E_r$, and suppose that the probability of the realization of $E_i$ in each trial is $p_i\ (i=1,...r)$. In general, the numbers $p_i$ are subject only to the condition
+
+$$
+(9.1) \hspace{4em} p_1+ \cdots +p_r=1, \hspace{2em} p_i \ge 0
+$$
+
+The result of $n$ trials is a succession like $E_3 E_2 E_1 ...$. The probability that in $n$ trials $E_i$ occurs $k_i$ times, $E_2$ occurs $k_2$ times, etc., is
+
+$$
+(9.2) \hspace{4em} \frac{n!}{k_1! k_2! \cdots k_r!} p_1^{k_1} p_2^{k_2} \cdots p_r^{k_r}
+$$
+
+here the $k_i$ are arbitrary non-negative integers subject to the obvious condition
+
+$$
+(9.3) \hspace{4em} k_1+k_2+ \cdots +k_r = n
+$$
+
+<br><br><br>
+
+## Chapter 8 The Normal Distribution to the Binomial Distribution
+
+<br><br>
+
+### 1. The Normal Distribution
+
+**Definition.** The function defined by
+
+$$
+(1.1) \hspace{4em} \mathfrak{n}(x)=\frac{1}{\sqrt{2 \pi}} e^{-\frac{1}{2}x^2}
+$$
+
+is called the normal density function; its integral
+
+$$
+(1.2) \hspace{4em} \mathfrak{N} (x)=\frac{1}{\sqrt{2 \pi}} \int ^x _{-\infty} e^{-\frac{1}{2}y^2} dy
+$$
+
+is the normal distribution function.
+[The notation $\mathfrak{n}$ and $\mathfrak{N}$ are not standard. $\phi$ and $\Phi$ are more customary. This is for consistency with volume 2]
+
+**Lemma 1.** The domain bounded by the graph of $\mathfrak{n}(x)$ and the $x$-axis has unit area, that is,
+
+$$
+(1.3) \hspace{4em} \int ^{+\infty} _{-\infty} \mathfrak{n}(x) dx = 1
+$$
+
+**Proof.** We have
+
+$$
+\begin{align*}
+(1.4) \hspace{4em} \{\int ^{+\infty}_{-\infty} \mathfrak{n}(x) dx\}^2 &= \int ^{+\infty}_{-\infty} \int ^{+\infty}_{-\infty} \mathfrak{n}(x) \mathfrak{n}(y)\ dx\ dy\\
+&=\frac{1}{2\pi} \int ^{+\infty}_{-\infty} \int ^{+\infty}_{-\infty} e^{-\frac{1}{2}(x^2+y^2)}\ dx\ dy
+\end{align*}
+$$
+
+This doulbe integral can be expressed in polar coordinates. The 
