@@ -24,6 +24,7 @@
     - [9. The Multinomial Distribution](#9-the-multinomial-distribution)
   - [Chapter 8 The Normal Distribution to the Binomial Distribution](#chapter-8-the-normal-distribution-to-the-binomial-distribution)
     - [1. The Normal Distribution](#1-the-normal-distribution)
+    - [2. Orientation: Symmetric Distributions](#2-orientation-symmetric-distributions)
 
 ## Chapter 4 Combination of Events
 
@@ -528,6 +529,7 @@ $$
 is the normal distribution function.
 [The notation $\mathfrak{n}$ and $\mathfrak{N}$ are not standard. $\phi$ and $\Phi$ are more customary. This is for consistency with volume 2]
 
+\
 **Lemma 1.** The domain bounded by the graph of $\mathfrak{n}(x)$ and the $x$-axis has unit area, that is,
 
 $$
@@ -543,4 +545,43 @@ $$
 \end{align*}
 $$
 
-This doulbe integral can be expressed in polar coordinates. The 
+This doulbe integral can be expressed in polar coordinates. The remaining calculations are omitted.
+
+$$
+(1.6) \hspace{4em} \mathfrak{N}(-x) = 1 - \mathfrak{N}(x)
+$$
+
+For many purposes it is convenient to have an elementary estimate of $1 - \mathfrak{N}(x)$, for large $x$. Such an estimate is given by
+
+\
+**Lemma 2.** As $x \rightarrow \infty$
+
+$$
+(1.7) \hspace{4em} 1 - \mathfrak{N}(x) \sim x^{-1} \mathfrak{n}(x)
+$$
+
+more precisely, the double inequality
+
+$$
+(1.8) \hspace{4em} [x^{-1} - x^{-3}] \mathfrak{n}(x) < 1 - \mathfrak{N}(x) < x^{-1}\mathfrak{n}(x)
+$$
+
+holds for every $x > 0$.
+
+\
+**Proof.** Obviouly
+
+$$
+(1.9) \hspace{2em} [1 - 3x^{-4}]\mathfrak{n}(x) < \mathfrak{n}(x) < [1+x^{-2}]\mathfrak{n}(x)
+$$
+
+\
+**Note on Terminology.**
+
+The term *distribution function* is used in the mathematical literature for never-decreasing functions of $x$ which tend to $0$ as $x \rightarrow -\infty$, and to $1$ as $x \rightarrow \infty$. Statisticians currently prefer the term *cummulative distribution function*, but the adjective "cummulative"is redundant. A *density function* is a non-negative function $f(x)$ whose integral, extended over the entire $x$-axis, is unity. The older term *frequency function* is a synonym for density function.
+
+The normal distribution function is often called the *Gaussian distribution*, but it was used in the probability theory earlier by DeMoivre and Laplace. If the origin and the unit of measurement are changed, then $\mathfrak{N}(x)$ is tranformed into $\mathfrak{N}((x-a)/b)$; this function is called the normal distribution function with mean $a$ and variance $b^2$ (or standard deviation $|b|$). The function $2\mathfrak{N}(x\sqrt{2})-1$ is often called *error function*.
+
+<br><br>
+
+### 2. Orientation: Symmetric Distributions
