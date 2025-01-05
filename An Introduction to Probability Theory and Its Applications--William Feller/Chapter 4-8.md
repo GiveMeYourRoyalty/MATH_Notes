@@ -25,6 +25,13 @@
   - [Chapter 8 The Normal Distribution to the Binomial Distribution](#chapter-8-the-normal-distribution-to-the-binomial-distribution)
     - [1. The Normal Distribution](#1-the-normal-distribution)
     - [2. Orientation: Symmetric Distributions](#2-orientation-symmetric-distributions)
+    - [3. The Demoivre-Laplace Limit Theorem](#3-the-demoivre-laplace-limit-theorem)
+    - [5. Relation to the Poisson Approximation](#5-relation-to-the-poisson-approximation)
+    - [6. Large Deviations](#6-large-deviations)
+  - [Chapter 8 Unlimited Sequences of Bernoulli Trials](#chapter-8-unlimited-sequences-of-bernoulli-trials)
+    - [2. Systems of Gambling](#2-systems-of-gambling)
+    - [3. The Borel-Cantelli Lemmas](#3-the-borel-cantelli-lemmas)
+    - [4. The Strong Law of Large Numbers](#4-the-strong-law-of-large-numbers)
 
 ## Chapter 4 Combination of Events
 
@@ -569,7 +576,7 @@ $$
 holds for every $x > 0$.
 
 \
-**Proof.** Obviouly
+**Proof.** Obviously
 
 $$
 (1.9) \hspace{2em} [1 - 3x^{-4}]\mathfrak{n}(x) < \mathfrak{n}(x) < [1+x^{-2}]\mathfrak{n}(x)
@@ -585,3 +592,284 @@ The normal distribution function is often called the *Gaussian distribution*, bu
 <br><br>
 
 ### 2. Orientation: Symmetric Distributions
+
+\
+We proceed to explain the use of normal distribution as an approximation to the binomial with $p=\frac{1}{2}$.
+
+For definiteness we take $n=2v$ even, and to simplify notations we put
+
+$$
+(2.1) \hspace{4em} a_k = b(v+k;2v,\frac{1}{2})
+$$
+
+$k$ runs from $-v$ to $v$. Since $a_{-k} = a_k$ we shall consider only $k \ge 0$.
+
+To get an idea concerning the behaviour of the sequence $a_0, a_2, a_2, ...$ we shall compare its general term with $a_0$ using the relation
+
+$$
+(2.2) \hspace{4em} a_k = a_0 \cdot \frac{v(v-1)\cdots (v-k+1)}{(v+1)(v+2)\cdots(v+k)}
+$$
+
+which follows trivially from the definition.
+
+[Some inferences are omitted here.]
+
+\
+If $v \rightarrow \infty$ and $k$ varies within a range $0 < k < K_v$ such that
+
+$$
+(2.4) \hspace{4em} K_v^3 /v^2 \rightarrow 0
+$$
+
+We have the approximation
+
+$$
+(2.5) \hspace{4em} a_k \sim a_0 e^{-k^2/v}
+$$
+
+Combining Stirling's formula
+
+$$
+(2.7) \hspace{4em} a_k \sim h \mathfrak{n}(kh) \hspace{2em} \text{where } h = \sqrt{2/v} = 2/\sqrt{n}
+$$
+
+\
+**Approximation Theorem.** For fixed $z_1 < z_2$
+
+$$
+(2.10) \hspace{4em} \sum _{\frac{1}{2}z_1\sqrt{n} \le k \le \frac{1}{2}z_2 \sqrt{n}} a_k \rightarrow \mathfrak{N}(z_2) - \mathfrak{N}(z_1)
+$$
+
+<br><br>
+
+### 3. The Demoivre-Laplace Limit Theorem
+
+\
+We proceed to show how our approximations can be extended to the general binomial distribution with $p \ne \frac{1}{2}$. The first complication arises in connection with the central term of the distribution. The index $m$ of the central term is the unique integer of the form
+
+$$
+(3.1) \hspace{4em} m = np + \delta \hspace{2em} \text{with } -q < \delta \le p
+$$
+
+The quantity $\delta$ will be ultimately neglected, but it occurs in the calculations.
+
+\
+Now we renumber the terms of the binomial distribution and write
+
+$$
+(3.2) \hspace{4em} a_k = b(m+k;n,p) = \binom{n}{m+k} p^{m+k} q^{n-m-k}
+$$
+
+For definiteness we consider $k > 0$, since the range $k < 0$ is covered by interchanging $p$ and $q$. We have now
+
+$$
+(3.3) \hspace{4em} a_k=a_0 \frac{(n-m)(n-m-1)\cdots(n-m-k+1)p^k}{(m+1)(m+2)\cdots(m+k)q^k}
+$$
+
+This can be rewritten in the form
+
+$$
+(3.4) \hspace{4em} a_k = a_0 \frac{(1-pt_0)(1-pt_1)\cdots (1-pt_{k-1})}{(1+qt_0)(1+qt_1)\cdots(1+qt_{k-1})}
+$$
+
+where we put for abbreviation
+
+$$
+(3.5) \hspace{4em} t_j = \frac{j + \delta + q}{(n+1)pq}
+$$
+
+We shall use (3.4) only for values of $k$ for which $t_k$ is small, say $t_k < \frac{1}{2}$. From the Taylor expansion (Chapter 2, (8.9)) for the logarithm it is then clear that
+
+$$
+(3.6) \hspace{4em} \frac{1-pt_j}{1+qt_j} = e^{-t_j+\cdots}
+$$
+
+Thus
+
+$$
+(3.7) \hspace{4em} a_k = a_0 e^{-(t_0+ \cdots +t_{k-1})+ \cdots}
+$$
+
+For simplicity we replace the right side by $k^2/(2npq)$ thereby committing an error less than $2k/(npq)$. Thus, if we write
+
+$$
+(3.9) \hspace{4em} a_k = a_0 e^{-k^2/(2npq)+\rho_k}
+$$
+
+the error term $\rho_k$ satisfies the inequality
+
+$$
+(3.10) \hspace{4em} |\rho_k| < \frac{k^3}{(npq)^2} + \frac{2k}{npq}
+$$
+
+[Some inferences are omitted]
+
+\
+**Theorem 1.** If $n \rightarrow \infty$ and $k$ is constrained to an interval $k < K_n$ such that $K_n^3/n^2 \rightarrow 0$, then for every $\epsilon > 0$ and $n$ is sufficiently large
+
+$$
+(3.14) \hspace{4em} 1-\epsilon < \frac{a_k}{k\mathfrak{n}(kh)} < 1 + \epsilon
+$$
+
+The main application of theorem 1 is to obtain approximations to probabilities of the form
+
+$$
+(3.15) \hspace{4em} \bold{P}\{\alpha \le S_n \le \beta\} = \sum ^\beta _{v=\alpha}b(v;n,p) = \sum ^{\beta-m} _{k=\alpha-m} a_k
+$$
+
+\
+**Theorem 2.** *(DeMoivre-Laplace limit theorem.)* For fixed $z_1$ and $z_2$ as $n \rightarrow \infty$
+
+$$
+(3.17) \hspace{2em} \bold{P}\{np+z_1\sqrt{npq}\le S_n \le np+z_2\sqrt{npq}\} \rightarrow \mathfrak{N}(z_2) -\mathfrak{N}(z_1)
+$$
+
+The limit relation (3.17) takes on a more pleasing form is $S_n$ is replaced by the reduced number of successes $S_n^*$ defined by
+
+$$
+(3.18) \hspace{4em} S_n^* = \frac{S_n-np}{\sqrt{npq}}
+$$
+
+The inequality on the left side in (3.17) is the same as $z_1 \le S_n^* \le z_2$ and hence we can restate (3.17) in the form
+
+$$
+(3.19) \hspace{4em} \bold{P}\{z_1 \le S_n^* \le z_2\} \rightarrow \mathfrak{N}(z_2) -\mathfrak{N}(z_1)
+$$
+
+In most cases we shall refer to the limit theorem in this form. It shows, in particular, that for large $n$ the probability on the left is practically independent of $p$. This perits us to compare fluctuations in different series of Bernoulli trials simply by referring to our standard units.
+
+<br><br>
+
+### 5. Relation to the Poisson Approximation
+
+\
+For small $\lambda=np$ only the Poisson approximation can be used, but for large $\lambda$ we can use either the normal or the Poisson approximation. This implies that for large vales of $\lambda$ it must be possible to approximmate the Poisson distribution by the normal distribution.
+
+<br>
+
+### 6. Large Deviations
+
+\
+The Demoivre-Laplace theorem describess the asymptotic behavior of $\bold{P}\{z_1 < S_n^* < z_2\}$ for fixed $z_1$ and $z_2$. From its deviation it is clear that the theorem applies also when $z_1$ and $z_2$ are permitted to vary with $n$ in such a way that $z_1 \rightarrow \infty$, provided that the growth is sufficiently slow. In this case both sides in (3.17) tend to $0$, and the theorem is meaningful only if the *ratio* of the 2 sides tends to unity.
+
+To simplify the formulation the double inequality $z_1 < S_n^* < z_2$ is replaced by $S_n^* > z_1$. This is justified by the following lemma, which shows that when $z_1 \rightarrow \infty$ the upper limit $z_2$ plays no role.
+
+\
+**Lemma.** If $x_n \rightarrow \infty$ then for every fixed $\eta > 0$
+
+$$
+(6.1) \hspace{4em} \frac{\bold{P}\{S_n^* > x_n + \eta\}}{\bold{P}\{S_n^* > x_n\}} \rightarrow 0
+$$
+
+that is
+
+$$
+(6.2) \hspace{4em} \bold{P}\{x_n < S_n^* \le x_n + \eta\} \sim \bold{P}\{S_n^* > x_n\}
+$$
+
+In other words: When $S_n^*$ exceeds $x_n$ it is likely to be very close to $x_n$, and larger values play no role in the limit.
+
+[Related proof is omitted]
+
+\
+**Theorem.** If $x_n \rightarrow \infty$ in such a way that $x_n^3/\sqrt{n} \rightarrow 0$, then
+
+$$
+(6.6) \hspace{4em} \bold{P}\{S_n^* > x_n\} \sim 1 - \mathfrak{N}(x_n)
+$$
+
+In view of (1.7) the asymptotic relation (6.6) is fully equivalent to
+
+$$
+(6.7) \hspace{4em} bold{P}\{S_n^* > x_n\} \sim \frac{1}{\sqrt{2 \pi}} \cdot \frac{1}{x_n} e^{-\frac{1}{2}x_n^2}
+$$
+
+[Related proof is omitted]
+
+<br><br><br>
+
+## Chapter 8 Unlimited Sequences of Bernoulli Trials
+
+\
+In the present volume we are confined to the theory of discrete sample spaces, and this means a considerable loss of mathematical elegance. The general theory considers $n$ Bernoulli trials only as the beginning of an infinite sequence of trials. A sample point is then represented by an infinite sequence of letters $S$ and $F$, and the sample space is the aggregate of all such sequences. A finite sequence, like $SSFS$, stands for aggregate of all points with this beginning, that is, for compound event that in an infinite sequence fo tial s the first four result in $S, S, F, S$ respectively.
+
+<br>
+
+### 2. Systems of Gambling
+
+\
+We define a system as a set of fixed rules which for every trial uniquely determine whether or not the bettor is to bet; at the $k$th trial the decision may depend on the outcomes of the first $k-1$ trials, but not on the outcome of trials number $k, k+1, k+2,...$; finally the rules must be such as to ensure an indefinite continuation of the game.
+
+Under any system the successive bets form a sequence of Bernoulli trials with unchanged probability for success.
+
+For simplicity we assume that $p = \frac{1}{2}$. Let $A_k$ be the event "first bet occurs at the $k$th trial." Our definition of system requires that as $n \rightarrow \infty$ the probability that the first bet has occurred before the $n$th trial tends to $1$. This means
+
+$$
+(2.1) \hspace{4em} \sum \bold{P}\{A_k\} = 1
+$$
+
+\
+Next, let $B_k$ be the event "head at $k$th trial" and $B$ the event "the trial of the first bet results in heads." Then $B=A_1B_1 + A_2B_2 + A_3B_3 + ...$ which are mutually exclusive. Now $A_k$ only depends on the outcome of the first $k - 1$ trials, and $B_k$ only on the trial number $k$. Hence $A_k$ and $B_k$ are independent and $\bold{P}\{A_k B_k\} = \bold{P}\{A_k\} \bold{P}\{B_k\} = \frac{1}{2} \bold{P}\{A_k\}$. Thus $\bold{P}\{B\} = \sum \bold{P}\{A_kB_k\}=\frac{1}{2}\sum \bold{P}\{A_k\} = \frac{1}{2}$. This shows that under this system the probability of heads at the first bet is $\frac{1}{2}$.
+
+\
+It remains to show that the bets are stochastically independent. To verify this statement let $A_k^*$ be the event that the second bet occurs at the $k$th trial. Let $E$ represent the event "heads at the first 2 bets"; it is the union of all events $A_jB_jA_k^*B_k$ where $j < k$ (if $j \ge k$, then $A_j$ and $A_k^*$ are mutually exclusive and $A_jA_k^* = 0$). Therefore
+
+$$
+(2.2) \hspace{4em} \bold{P}\{E\} = \sum _{j=1} ^\infty \sum _{k=j+1} ^\infty \bold{P}\{A_jB_jA_k^*B_k\}
+$$
+
+As before, we see that the event $B_k$ is independent of the event $A_jB_jA_k^*$ (which depends only on the outcomes of hte first $K-1$ trials). Hence
+
+$$
+\begin{align*}
+  (2.3) \hspace{4em} \bold{P}\{E\} &= \frac{1}{2} \sum _{j=1} ^\infty \sum _{k=j+1} ^\infty \bold{P}\{A_jB_jA_k^*\}\\
+  &= \frac{1}{2} \sum _{j=1} ^\infty \bold{P}\{A_jB_j\} \sum _{k=j+1} ^\infty \bold{P}\{A_k^*\ |\ A_jB_j\}
+\end{align*}
+$$
+
+Now, whenever the first bet occurs and whatever its outcome, the game is sure to continue. The second series in (2.3) is unity, and we have already seen that $\sum \bold{P}\{A_jB_j\} = \frac{1}{2}$. Hence $\bold{p}\{E\} = \frac{1}{4}$ as contended.
+
+\
+Note that the situation is different when the player is permitted to vary his stakes. In this case there exist advantageous strategies, and the game depends on the strategy.
+
+<br><br>
+
+### 3. The Borel-Cantelli Lemmas
+
+\
+2 simple lemmas concerning infinite sequences of trials are used to frequently that they deserve special attention. We formulate them for Bernoulli trials, but they apply to more general cases.
+
+Let $A_1, A_2, ...$ be an infinite sequence of events each of which depends only on a finite number of trials; in other words, we suppose that there exists an integer $n_k$ such that $A_k$ is an event in the sample space of the first $n_k$ Bernouli trials. Put
+
+$$
+(3.1) \hspace{4em} a_k = \bold{P}\{A_k\}
+$$
+
+We can speak of the event $U_r$, that an unen ding sequence of trials produces more than $r$ among the enents $\{A_k\}$, and also of the event $U_\infty$, that infinitely many among the $\{A_k\}$ occur. The event $U_r$ is defined only in the infinite sample space, and ite probability is the limit of $\bold{P}\{U_{n,r}\}$, the probability that $n$ trials produce more than $r$ among the events $\{A_k\}$. Finally, $\bold{P}\{U_\infty\} = \lim \bold{P}\{U_r\}$.
+
+\
+**Lemma 1.** If $\sum a_k$ converges, the with probability one only finitely many events $A_k$ occur. More precisely, it is claimed that for $r$ sufficiently large, $\bold{P}\{U_r\} < \epsilon$ or: to every $\epsilon > 0$ it is possible to find an integer $r$ such that the probability that $n$ trials produce one or more among the events $A_{r+1}, A_{r+2}, ...$ is less than $\epsilon$ for all $n$.
+
+\
+**Lemma 2.** If the events $A_k$ are mutually independent, ad if $\sum a_k$ diverges, then with probability one infinitely many $A_k$ occur. In other words, it is claimed that for every $r$ the probability that $n$ trials produce more than $r$ among the events $A_k$ tend to $1$ as $n \rightarrow \infty$.
+
+<br><br>
+
+### 4. The Strong Law of Large Numbers
+
+\
+We deal with a statement much stronger than the weak law of large numbers [Chapter 6, (4.1)]. THe latter says that for every sufficiently large fixed $n$ the average $S_n / n$ is likely to be near $p$, but it does not say that $S_n / n$ is bound to stay near $p$ if the number of trials is increased. We shall now prove that with probability one $S_n / n - p$ becomes adn remains small.
+
+\
+**Strong Law of Large Numbers.** For every $\epsilon > 0$ with probability one there occur only finitely many of the events
+
+$$
+(4.2) \hspace{4em} \left| \frac{S_n}{n} - p \right| > \epsilon
+$$
+
+[Proof is omitted]
+
+\
+The strong law of large numbers was first formulated by Cantelli after Borel and Hausdorff has discussed certain special cases. Like the weak law, it is only a very special case of a general theorem on random variables.
+
+Following theory inferences of the chapter are skipped at first reading.
