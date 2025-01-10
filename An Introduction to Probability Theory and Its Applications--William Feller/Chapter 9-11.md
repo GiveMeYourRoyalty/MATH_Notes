@@ -675,3 +675,32 @@ The considerations of the first 2 sections apply without essential modifications
 
 ### *6. The Continuity Theorem
 
+\
+A sequence of probability distributions converges to a limiting distribution if and only if the corresponding generating functions converges.
+
+\
+**Continuity Theorem.** Suppose that for every fixed $n$ the sequence $a_{0,n},a_{1,n},a_{2,n},...$ is a probability distribution, that is
+
+$$
+(6.1) \hspace{4em} a_{k,n} \ge 0, \hspace{1em} \sum _{k=0}^\infty a_{k,n}=1
+$$
+
+In order that a limit
+
+$$
+(6.2) \hspace{4em} a_k=\lim _{n \rightarrow \infty} a_{k,b}
+$$
+
+exists for every $k \ge 0$ it is necessary and sufficient that the limit
+
+$$
+(6.3) \hspace{4em} A(s)=\lim _{n \rightarrow \infty} \sum _{k=0}^\infty a_{k,n}s^k
+$$
+
+exists for each $s$ in the open interval $0 < s < 1$. In the case automatically
+
+$$
+(6.4) \hspace{4em} A(s)=\sum _{k=0}^\infty a_ks^k
+$$
+
+It is obvious that $a_k \ge 0$ and that $\sum a_k \le 1$. Note, however, that the sum may be strictly less than $1$. For example, if $a_{k,n}=f_{k+n}$ then $a_k=0$ for all $k$.
